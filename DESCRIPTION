@@ -4,7 +4,7 @@ Title: Collection of function used for my MA
 Version: 1.0
 Date: 2014-11-15
 Author: Soeren Abbenseth
-Maintainer: Soeren Abbenseth | spam at soeren . me
+Maintainer: Soeren Abbenseth <spam@soeren.me>
 Description: It provides a clean overview over the functions I wrote during my
     Master's Thesis. It is mainly concentrated on the work with Twitter Data in
     R.
