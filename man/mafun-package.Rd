@@ -3,12 +3,10 @@
 \alias{mafun}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+Collection of functions used in Master's Thesis
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+It provides a clean overview over the functions I wrote during my Master's Thesis. It is mainly concentrated on the work with Twitter Data in R.
 }
 \details{
 \tabular{ll}{
@@ -16,25 +14,9 @@ Package: \tab mafun\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
 Date: \tab 2014-11-15\cr
-License: \tab What license is it under?\cr
+License: \tab MIT License\cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
+See Index \href{http://127.0.0.1:24911/help/library/mafun/html/00Index.html}{Index} for an overview over the included functions.
 }
 \author{
-Who wrote it
-
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
-}
-\references{
-~~ Literature or other references for background information ~~
-}
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation directory ~~
-\keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
-~~ simple examples of the most important functions ~~
-}
+Soeren Abbenseth | spam at soeren . me
