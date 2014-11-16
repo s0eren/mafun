@@ -28,7 +28,7 @@ getTweets <- function(dir=getwd(), varsToKeep=basicVars, restrictToPartyTweets=T
   
   
   # Create Folder for Output ------------------------------------------------
-  dir.create(file.path(dir,'output'), recursive=T)
+  dir.create(file.path(dir,'output'), recursive=T, showWarnings = FALSE)
   #  ------------------------------------------------------------------------
              
   # Define Standard-Variables to Keep ---------------------------------------
@@ -86,7 +86,7 @@ getTweets <- function(dir=getwd(), varsToKeep=basicVars, restrictToPartyTweets=T
   for(i in 1:length(inputFiles)){
     
     # Read Data -------------------------------------------------------------
-    Tweets <- fromJSON(inputFiles[i], flatten=T)
+    Tweets <- fromJSON(file.path(dir,inputFiles[i]), flatten=T, unicode=F)
     #  ----------------------------------------------------------------------
     
     # Delete Empty Rows -----------------------------------------------------
@@ -94,7 +94,7 @@ getTweets <- function(dir=getwd(), varsToKeep=basicVars, restrictToPartyTweets=T
     #  ----------------------------------------------------------------------
     
     # Restrict to specific language -----------------------------------------
-    Tweets <- Tweets[tweets$lang==restrictToLang,]
+    Tweets <- Tweets[Tweets$lang==restrictToLang,]
     #  ----------------------------------------------------------------------
     
     # Remove unnessecary columns --------------------------------------------
@@ -149,7 +149,7 @@ getTweets <- function(dir=getwd(), varsToKeep=basicVars, restrictToPartyTweets=T
     #  ----------------------------------------------------------------------
     
     # Save Tweets as R-Object -----------------------------------------------
-    save(Tweets, file=paste('output/',inputFiles[i],'.R', sep=''))
+    save(Tweets, file=paste(dir, '/output/',inputFiles[i],'.R', sep=''))
     #  ----------------------------------------------------------------------
     
     # Generate Return-Output ------------------------------------------------
@@ -163,13 +163,11 @@ getTweets <- function(dir=getwd(), varsToKeep=basicVars, restrictToPartyTweets=T
     cat('\n \n', rep('=', 75), sep='')
     cat('\n',nrow(Tweets), 'Tweets have been processed and stored :) \n')
     cat('\n Find Tweets here:', paste('output',inputFiles[i],'.R', sep=''))
-    cat('\n \n', rep('=', 75), sep='')
+    cat('\n \n')
     
-    if(restrictToPartyTweets) cat('\n \n', rep('=', 75), sep='')
-    if(restrictToPartyTweets) cat('\n Tweets per Party:\n'); print(return_parties)
+    if(restrictToPartyTweets) cat('\n Tweets per Party:\n'); print(returnParties)
     
-    cat('\n', rep('=', 75), sep='')
-    cat('\n Proportion of Non-Zero-Scored-Tweets: \n', return_non0, '%')
+    cat('\n Proportion of Non-Zero-Scored-Tweets: \n', returnNon0, '%')
     
     cat('\n \n', rep('=', 75), sep='')
     #  ----------------------------------------------------------------------
@@ -182,7 +180,7 @@ getTweets <- function(dir=getwd(), varsToKeep=basicVars, restrictToPartyTweets=T
   
   TweetsCombine <- lapply(outputFiles, function(x) get(load(paste('output',x,sep=''))))
   Tweets <- do.call(rbind, TweetsCombine)
-  save(Tweets, file='output/TweetsCombine.R')
+  save(Tweets, file=paste(dir, '/output/TweetsCombined.R', sep=''))
 }
   
 
