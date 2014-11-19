@@ -3,20 +3,45 @@
 \alias{getTweets}
 \title{getTweets}
 \usage{
-getTweets(dir = getwd(), varsToKeep = basicVars,
+getTweets(dir = getwd(), varsToKeep = defaultVars,
   restrictToPartyTweets = TRUE, restrictToLang = "de", wordlistPositive,
   wordlistNegative, combine = TRUE)
 }
 \arguments{
-\item{bla}{}
+\item{dir}{Link to a folder, where JSON-Files are stored. Default is current working directory.}
+
+\item{restrictToPartyTweets}{If \code{TRUE}, only Tweets mentioning a German Party will be kept. Default is \code{TRUE}. For a list of the respective parties see: Details.}
+
+\item{restrictToLang}{Setting this value to a 2-digit country ISO-Code will ensure that only Tweets in this language will be kept.}
+
+\item{wordlistPositive}{Link to file containing the positive wordliste the Tweets will be compared with.}
+
+\item{wordlistNegative}{Link to file containing the negative wordliste the Tweets will be compared with.}
+
+\item{combine}{If \code{TRUE}, individual data.frames containing Tweets will be combined to one. Default is \code{TRUE}}
+
+\item{VarsToKeep}{A vector of variable names that should be kept. For default variables see: Details.}
 }
 \description{
-bla
+The function will read a directory of JSON-Files containing Output of Twitter's Streaming API and transform them to a \code{data.frame} in R. If multiple files are handed over to the function it allows to combine them to a single \code{data.frame}.
+
+Please keep in mind that the function is mainly designed to work with Tweets containing German parties.
 }
 \details{
-bla
+Default variables to be kept: \code{created_at, id_str, text, source, in_reply_to_status_id_str, in_reply_to_user_id_str, retweet_count, favorite_count, retweeted, lang,
+timestamp_ms, user.id_str, user.screen_name, user.followers_count, user.friends_count, user.listed_count, user.favourites_count, user.statuses_count,
+user.time_zone, geo.type, geo.coordinates, coordinates.type, coordinates.coordinates, retweeted_status.id_str, entities.hashtags, entities.trends,
+entities.urls, entities.user_mentions, entities.symbols, entities.media, extended_entities.media}.
+A full list of all available variable can be found on \href{https://dev.twitter.com/overview/api/tweets}{dev.twitter.com}.
+
+If \code{restrictToPartyTweets} is set to \code{TRUE} variables checking the mentioning of the following parties will be created: CDU, CSU, SPD, Linke, Gruene, AfD, FDP.
+Additionaaly all Tweets not mentioning any of the parties will be deleted.
 }
 \examples{
-bla
+getTweets <- function(dir='C:/user/tweets',
+                     varsToKeep='text',
+                     wordlistPositive='C:/user/dictionary/pos.txt',
+                     wordlistNegative='C:/user/dictionary/neg.txt',
+                     combine=FALSE)
 }
 
