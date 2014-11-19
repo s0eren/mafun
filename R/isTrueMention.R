@@ -25,5 +25,5 @@
 isTrueMention <- function(tweet) {
   tweet <- tolower(tweet)
   isTrueMention <- substr(tweet,1,1) == '@'
-  return(isMention) 
+  return(isTrueMention) 
 }
