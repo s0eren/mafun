@@ -11,15 +11,15 @@
 #' entities.urls, entities.user_mentions, entities.symbols, entities.media, extended_entities.media}.
 #' A full list of all available variable can be found on \href{https://dev.twitter.com/overview/api/tweets}{dev.twitter.com}.
 #' 
-#' If \code{restrictToPartyTweets} is set to \code{TRUE} variables checking the mentioning of the following parties will be created: CDU, CSU, SPD, Linke, Gruene, AfD, FDP. 
-#' Additionaaly all Tweets not mentioning any of the parties will be deleted.
+#' If \code{restrictToPartyTweets} is set to \code{TRUE}, variables checking the mentioning of the following parties will be created: CDU, CSU, SPD, Linke, Gruene, AfD, FDP. 
+#' Additionally all Tweets not mentioning any of the parties will be deleted.
 #' 
 #' @param dir Link to a folder, where JSON-Files are stored. Default is current working directory.
 #' @param VarsToKeep A vector of variable names that should be kept. For default variables see: Details.
 #' @param restrictToPartyTweets If \code{TRUE}, only Tweets mentioning a German Party will be kept. Default is \code{TRUE}. For a list of the respective parties see: Details.
 #' @param restrictToLang Setting this value to a 2-digit country ISO-Code will ensure that only Tweets in this language will be kept.
-#' @param wordlistPositive Link to file containing the positive wordliste the Tweets will be compared with. 
-#' @param wordlistNegative Link to file containing the negative wordliste the Tweets will be compared with. 
+#' @param wordlistPositive Link to file containing the positive wordliste Tweets will be compared with. 
+#' @param wordlistNegative Link to file containing the negative wordliste Tweets will be compared with. 
 #' @param combine If \code{TRUE}, individual data.frames containing Tweets will be combined to one. Default is \code{TRUE}
 #' @export
 #' @examples 
@@ -183,7 +183,7 @@ getTweets <- function(dir=getwd(), varsToKeep=defaultVars, restrictToPartyTweets
     # OUTPUT
     cat('\n \n', rep('=', 75), sep='')
     cat('\n',nrow(Tweets), 'Tweets have been processed and stored :) \n')
-    cat('\n Find Tweets here:', paste(dir,'output/',inputFiles[i],'.R', sep=''))
+    cat('\n Find Tweets here:', paste(dir,'/output/',inputFiles[i],'.R', sep=''))
     cat('\n \n')
     
     if(restrictToPartyTweets) cat('\n Tweets per Party:\n'); print(returnParties)
@@ -197,11 +197,14 @@ getTweets <- function(dir=getwd(), varsToKeep=defaultVars, restrictToPartyTweets
   #  ------------------------------------------------------------------------ 
   
   # Combine individual Files to one data.frame ------------------------------
-  outputFiles <- list.files(path=paste(dir,'/output',sep=''), pattern='.R')
-  
-  TweetsCombine <- lapply(outputFiles, function(x) get(load(paste(dir,'/output/',x,sep=''))))
-  Tweets <- do.call(rbind, TweetsCombine)
-  save(Tweets, file=paste(dir, '/output/TweetsCombined.R', sep=''))
+  if(combine=TRUE){
+    outputFiles <- list.files(path=paste(dir,'/output',sep=''), pattern='.R')
+    
+    TweetsCombine <- lapply(outputFiles, function(x) get(load(paste(dir,'/output/',x,sep=''))))
+    Tweets <- do.call(rbind, TweetsCombine)
+    save(Tweets, file=paste(dir, '/output/TweetsCombined.R', sep=''))
+  }
+  #  ------------------------------------------------------------------------ 
 }
   
 
