@@ -7,27 +7,18 @@ mafun is an R-package that provides a clean overview over the functions I wrote 
 mafun is available on Github. To install packages from Github, the devtools-package is needed.
 
 
-```
-if(!require('devtools')) install.packages('devtools'); require(devtools)
-
-```
+```if(!require('devtools')) install.packages('devtools'); require(devtools)```
 
 You can then install mafun with the following code.
 
-```
-if(!require('mafun')) install_github('s0eren/mafun', 's0eren')
-library(mafun)
-
-```
+```if(!require('mafun')) install_github('s0eren/mafun', 's0eren')
+library(mafun)```
 
 ## Included Functions
 
 To get an overview of the included functions and a description of their application, use:
 
-```
-?mafun
-
-```
+```?mafun```
 
 ## Copyright & License
 
