@@ -14,9 +14,9 @@ getTweets(dir = getwd(), varsToKeep = defaultVars,
 
 \item{restrictToLang}{Setting this value to a 2-digit country ISO-Code will ensure that only Tweets in this language will be kept.}
 
-\item{wordlistPositive}{Link to file containing the positive wordliste the Tweets will be compared with.}
+\item{wordlistPositive}{Link to file containing the positive wordliste Tweets will be compared with.}
 
-\item{wordlistNegative}{Link to file containing the negative wordliste the Tweets will be compared with.}
+\item{wordlistNegative}{Link to file containing the negative wordliste Tweets will be compared with.}
 
 \item{combine}{If \code{TRUE}, individual data.frames containing Tweets will be combined to one. Default is \code{TRUE}}
 
@@ -34,8 +34,8 @@ user.time_zone, geo.type, geo.coordinates, coordinates.type, coordinates.coordin
 entities.urls, entities.user_mentions, entities.symbols, entities.media, extended_entities.media}.
 A full list of all available variable can be found on \href{https://dev.twitter.com/overview/api/tweets}{dev.twitter.com}.
 
-If \code{restrictToPartyTweets} is set to \code{TRUE} variables checking the mentioning of the following parties will be created: CDU, CSU, SPD, Linke, Gruene, AfD, FDP.
-Additionaaly all Tweets not mentioning any of the parties will be deleted.
+If \code{restrictToPartyTweets} is set to \code{TRUE}, variables checking the mentioning of the following parties will be created: CDU, CSU, SPD, Linke, Gruene, AfD, FDP.
+Additionally all Tweets not mentioning any of the parties will be deleted.
 }
 \examples{
 getTweets <- function(dir='C:/user/tweets',

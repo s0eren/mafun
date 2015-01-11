@@ -197,7 +197,7 @@ getTweets <- function(dir=getwd(), varsToKeep=defaultVars, restrictToPartyTweets
   #  ------------------------------------------------------------------------ 
   
   # Combine individual Files to one data.frame ------------------------------
-  if(combine=TRUE){
+  if(combine==TRUE){
     outputFiles <- list.files(path=paste(dir,'/output',sep=''), pattern='.R')
     
     TweetsCombine <- lapply(outputFiles, function(x) get(load(paste(dir,'/output/',x,sep=''))))
