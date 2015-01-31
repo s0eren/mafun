@@ -19,7 +19,8 @@ This function classifies a document as "positive", "negative" or "neutral" on th
 The functions searches through the text of given documents and returns +1 if the text contains a smile-emoticon,
 -1 if it contains a frown emoticon and 0 if no emoticons were found in the text.
 
-The functions provides default vectors for smile- and frown-emoticons, which can be overwritten with self-defined vectors.
+The functions provides default vectors for smile- and frown-emoticons, inspired by the Read (2005), which can be overwritten with self-defined vectors.
+To see the vectors, type "EmoticonScore" (without brackets) into the console and press Enter.
 }
 \examples{
 tweet1 <- 'I am totally happy :-)'
@@ -31,5 +32,8 @@ tweets <- c(tweet1, tweet2, tweet3)
 sapply(tweets, EmoticonScore)
 I am totally happy :-)         I feel neutral    I am totally sad =(
                      1                      0                     -1
+}
+\seealso{
+Read, Jonathon, ed. (2005): Using Emoticons to reduce Dependency in Machine Learning Techniques for Sentiment Classification. ACL Student Research Workshop. (2005). Association for Computational Linguistics. Ann Arbor.
 }
 

@@ -5,7 +5,10 @@
 #' @details The functions searches through the text of given documents and returns +1 if the text contains a smile-emoticon, 
 #' -1 if it contains a frown emoticon and 0 if no emoticons were found in the text.
 #' 
-#' The functions provides default vectors for smile- and frown-emoticons, which can be overwritten with self-defined vectors.
+#' The functions provides default vectors for smile- and frown-emoticons, inspired by the Read (2005), which can be overwritten with self-defined vectors.
+#' To see the vectors, type "EmoticonScore" (without brackets) into the console and press Enter.
+#' 
+#' @seealso Read, Jonathon, ed. (2005): Using Emoticons to reduce Dependency in Machine Learning Techniques for Sentiment Classification. ACL Student Research Workshop. (2005). Association for Computational Linguistics. Ann Arbor.
 #' 
 #' @param doc A character string OR a vector of character strings.
 #' @param smile A vector of smile-emoticons.
@@ -25,8 +28,8 @@
 
 EmoticonScore <- function(doc, smile=smile, frown=frown){
   # Define Standard-Emoticons  ----------------------------------------------
-  smile <- c("\\:\\-\\)","\\:\\)","\\=\\)","\\:\\-D","\\:D","8\\-D","8D","x\\-D","xD","X\\-D","XD")
-  frown <- c("\\:\\-\\(", "\\:\\(", "\\=\\(", "\\;\\(", "\\:\\-\\|","\\:\\|","\\:\\'\\-\\(")
+  smile <- c(" \\:\\-\\) "," \\:\\) "," \\=\\) "," \\:\\-D "," \\:D "," 8\\-D "," 8D "," x\\-D "," xD "," X\\-D "," XD ")
+  frown <- c(" \\:\\-\\( ", " \\:\\( ", " \\=\\( ", " \\;\\( ", " \\:\\-\\| "," \\:\\| "," \\:\\'\\-\\( ")
   #  ------------------------------------------------------------------------
   
   #  ------------------------------------------------------------------------
